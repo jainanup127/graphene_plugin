@@ -1,27 +1,26 @@
-
-from graphene_plugin.Query.QueryBuilder import Query as qs
+from airflow.plugins_manager import AirflowPlugin
 from airflow.www.app import csrf
+from flask import Blueprint
 from flask_graphql import GraphQLView
 from graphene import Schema
-from airflow.plugins_manager import AirflowPlugin
-from flask import Blueprint,session
+from graphene_plugin.query_builder.Query import Query
 
-test_experiment2 = Blueprint('test_experiment2', __name__)
-test_experiment2.add_url_rule(
-    '/api/test1',
+airflow_graphql = Blueprint('airflow_graphql', __name__)
+csrf.exempt(airflow_graphql)
+
+airflow_graphql.add_url_rule(
+    '/api/airflow',
     view_func=GraphQLView.as_view(
         'graphql',
-        schema=Schema(query=qs),
+        schema=Schema(query=Query),
         graphiql=True
     )
 )
 
-csrf.exempt(test_experiment2)
-
 class AirflowTestPlugin(AirflowPlugin):
-    name = "GraphQLAPIsv2"
+    name = "GraphQLAPI"
     # operators = []
-    flask_blueprints = [test_experiment2]
+    flask_blueprints = [airflow_graphql]
     # hooks = []
     # executors = []
     #appbuilder_views = [v_appbuilder_package]
