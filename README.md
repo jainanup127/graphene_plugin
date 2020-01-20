@@ -13,6 +13,9 @@ Steps to install:
 1 - place this plugin inside your home's airflow/plugins directory
 e.g.: /home/info/airflow/plugins
 
+2 - run this pip command
+pip3 install flask flask-graphql flask-migrate flask-sqlalchemy graphene graphene-sqlalchemy
+
 2 - run airflow webserver on your desired port
 e.g. airflow webserver 8080
 
