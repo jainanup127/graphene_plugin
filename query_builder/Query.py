@@ -1,7 +1,7 @@
-from airflow.api.common.experimental.pool import get_pools
-from airflow.api.common.experimental.get_dag_runs import get_dag_runs
-from graphene import ObjectType, List, String
 import graphene_plugin.converter.converter as Converter
+from airflow.api.common.experimental.get_dag_runs import get_dag_runs
+from airflow.api.common.experimental.pool import get_pools
+from graphene import ObjectType, List, String
 from graphene_plugin.schema_generator.SchemaBuilder import PoolModel, DagRunModel
 
 class Query(ObjectType):

@@ -12,7 +12,7 @@ airflow_graphql.add_url_rule(
     '/api/airflow',
     view_func=GraphQLView.as_view(
         'graphql',
-        schema=Schema(query=Query),
+        schema=Schema(query=Query, auto_camelcase=True),
         graphiql=True
     )
 )
