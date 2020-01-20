@@ -1,6 +1,13 @@
 # graphene_plugin
 many more endpoints to be configured keep watching
 
+Prerequisite:
+make sure you have below packages installed
+1 - graphene
+2 - graphene_sqlalchemy
+3 - sqlalchemy
+4 - flask
+
 Steps to install:
 
 1 - place this plugin inside your home's airflow/plugins directory
