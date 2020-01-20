@@ -4,6 +4,7 @@ from flask import Blueprint
 from flask_graphql import GraphQLView
 from graphene import Schema
 from graphene_plugin.query_builder.Query import Query
+from graphene_plugin.schema_generator.SchemaBuilder import Mutation
 
 airflow_graphql = Blueprint('airflow_graphql', __name__)
 csrf.exempt(airflow_graphql)
@@ -12,7 +13,7 @@ airflow_graphql.add_url_rule(
     '/api/airflow',
     view_func=GraphQLView.as_view(
         'graphql',
-        schema=Schema(query=Query, auto_camelcase=True),
+        schema=Schema(query=Query, mutation=Mutation),
         graphiql=True
     )
 )

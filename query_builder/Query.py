@@ -12,6 +12,7 @@ class Query(ObjectType):
         return get_pools()
 
     def resolve_all_dagruns(self, info, dagId):
-        dagruns = get_dag_runs(dagId)
+        dagruns = get_dag_runs(dagId, run_url_route="airflow.graph")
         new_list = list(Converter.convertDag(dictionary) for dictionary in dagruns)
         return new_list
+
